@@ -6,9 +6,12 @@ async function getUnidadesEco(req,res) {
     console.log("obteniendo");
 
     const resultado = await googleUnidadesEco.sheetsAutomateGet();
-    //console.log(resultado);
-    res.json(resultado);
-    
+
+    const respuestaJSON = JSON.stringify(Object.assign({}, resultado))
+
+    res.send(respuestaJSON);
+    console.log(respuestaJSON);
+
 }
 
 async function postUnidadesEco(req,res) {
