@@ -7,30 +7,29 @@ async function getUnidadesEco(req,res) {
 
     const resultado = await googleUnidadesEco.sheetsAutomateGet();
     //console.log(resultado);
-    res.send(resultado);
+    res.json(resultado);
     
 }
 
 async function postUnidadesEco(req,res) {
     console.log("posteando");
 
-    const insertEjemplo = [[
-        "25/10/2022 10:10:59",
-        "Ejemplo_3",
-        "Ejemplo_3",
-        "Ejemplo_3",
-        "Ejemplo_3",
-        "030303",
-        "030303",
-        "Ejemplo_3",
-        "Ejemplo_3",
-        "Ejemplo_3",
-        "Ejemplo_3"
-      ]];
-    
-    const resultado = await googleUnidadesEco.sheetsAutomatePost(insertEjemplo);
+    // const insertEjemplo = [[
+    //     "25/10/2022 10:10:59",
+    //     "Ejemplo_3",
+    //     "Ejemplo_3",
+    //     "Ejemplo_3",
+    //     "Ejemplo_3",
+    //     "030303",
+    //     "030303",
+    //     "Ejemplo_3",
+    //     "Ejemplo_3",
+    //     "Ejemplo_3",
+    //     "Ejemplo_3"
+    //   ]];
+    //const resultado = await googleUnidadesEco.sheetsAutomatePost(insertEjemplo);
     //console.log(resultado);
-    res.send(resultado);
+    //res.json(resultado);
 }
 
 module.exports = { getUnidadesEco, postUnidadesEco};
