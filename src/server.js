@@ -3,12 +3,14 @@ const app = express();
 const bodyParser = require('body-parser');
 
 const serverRouter = require('./routes/server.routes.js');
-const unidadesEcoRouter = require('./routes/unidades-eco.routes');
+const unidadesEcoRouter = require('./routes/unidades-eco.routes.js');
+const vacantesRouter = require('./routes/vacantes.routes.js');
 
 const PORT = process.env.PORT || 3000;
 
 app.use(serverRouter);
 app.use(unidadesEcoRouter);
+app.use(vacantesRouter);
 
 app.listen(PORT, ()=> {
     console.log("Corriendo es 127.0.0.1:" + PORT)
