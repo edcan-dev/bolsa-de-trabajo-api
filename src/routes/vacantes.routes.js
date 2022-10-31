@@ -7,3 +7,4 @@ router.use(cors());
 // Nos permite obtener los recursos de la API
 // El cors se configura en el router, porque el router llema a los callbacks de las requests.
 
+module.exports = router;
