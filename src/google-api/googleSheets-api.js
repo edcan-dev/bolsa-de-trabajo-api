@@ -10,15 +10,15 @@ const auth = new GoogleAuth(
 });
 
 // ESTA FUNCION LEE LA HOJA DE CALCULO
-async function sheetsAutomateGet() {
+async function sheetsAutomateGet(hojaURL, hojaRango) {
 
     const client = await auth.getClient();
     const sheets = google.sheets({ version:"v4", auth:client });
 
     const getRows = await sheets.spreadsheets.values.get({
         auth,
-        spreadsheetId: "1aHT-PS82AUyetqzNh8Q2Wt1BwG0fg1wYp_Jbok_DCSU",
-        range:"Respuestas de formulario 1!A:K",
+        spreadsheetId: hojaURL,
+        range: hojaRango,
     });
     return getRows.data.values;
     /*
@@ -27,18 +27,17 @@ async function sheetsAutomateGet() {
 
     Los registro comienzan en el indice[1]
     */
-
 }
 
-async function sheetsAutomatePost(userPostData) {
+async function sheetsAutomatePost(hojaURL, hojaRango, userPostData) {
 
     const client = await auth.getClient();
     const sheets = google.sheets({ version:"v4", auth:client });
 
     const postRows = await sheets.spreadsheets.values.append({
         auth,
-        spreadsheetId: "1aHT-PS82AUyetqzNh8Q2Wt1BwG0fg1wYp_Jbok_DCSU",
-        range:"Respuestas de formulario 1!A:K",
+        spreadsheetId: hojaURL ,
+        range: hojaRango,
         valueInputOption: 'USER_ENTERED',
         resource: {
             values: userPostData,
@@ -51,8 +50,6 @@ async function sheetsAutomatePost(userPostData) {
         ["fila1 valor1","fila1 valor2","fila1 valor3"] 
         ["fila2 valor1","fila2 valor2","fila2 valor1"] 
     ]
-
-
     */
 }
 
