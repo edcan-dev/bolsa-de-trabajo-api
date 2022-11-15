@@ -16,9 +16,10 @@ async function getVacantes(req,res) {
 async function postVacantes(req,res) {
     console.log("Posteando Vacantes");
     
-    //console.log(req.body);
-    //console.log(Object.keys(req.body));
+    //console.log(Object.values(req.body));
 
+    const registroAInsertaer =[];
+    registroAInsertaer.push(Object.values(req.body));
     const insertEjemplo = [[
         "qwe123",
         "qwe123",
@@ -36,8 +37,9 @@ async function postVacantes(req,res) {
         "qwe123",
         "qwe123"
     ]];
-    const resultado = await googleSheets.sheetsAutomatePost(vacantesURL,vacantesRange,insertEjemplo);
-    res.json(resultado);
+    await googleSheets.sheetsAutomatePost(vacantesURL,vacantesRange,registroAInsertaer);
+    //res.json(resultado);
+    res.send(req.body)
 }
 
 // req.body es un objeto de Javascript
