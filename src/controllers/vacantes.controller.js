@@ -20,23 +20,23 @@ async function postVacantes(req,res) {
 
     const registroAInsertaer =[];
     registroAInsertaer.push(Object.values(req.body));
-    const insertEjemplo = [[
-        "qwe123",
-        "qwe123",
-        "qwe123",
-        "qwe123",
-        "qwe123",
-        "qwe123",
-        "qwe123",
-        "qwe123",
-        "qwe123",
-        "qwe123",
-        "qwe123",
-        "qwe123",
-        "qwe123",
-        "qwe123",
-        "qwe123"
-    ]];
+    // const insertEjemplo = [[
+    //     "qwe123",
+    //     "qwe123",
+    //     "qwe123",
+    //     "qwe123",
+    //     "qwe123",
+    //     "qwe123",
+    //     "qwe123",
+    //     "qwe123",
+    //     "qwe123",
+    //     "qwe123",
+    //     "qwe123",
+    //     "qwe123",
+    //     "qwe123",
+    //     "qwe123",
+    //     "qwe123"
+    // ]];
     await googleSheets.sheetsAutomatePost(vacantesURL,vacantesRange,registroAInsertaer);
     //res.json(resultado);
     res.send(req.body)
