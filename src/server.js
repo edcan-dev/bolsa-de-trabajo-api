@@ -19,5 +19,5 @@ app.use(vacantesRouter); // config middleware vacantesRouter
 
 
 app.listen(PORT, ()=> {
-    console.log("Corriendo es 127.0.0.1:" + PORT)
+    console.log("Listening on: "+ PORT)
 });
