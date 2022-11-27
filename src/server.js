@@ -19,5 +19,5 @@ app.use(vacantesRouter); // config middleware vacantesRouter
 
 
 app.listen(PORT, ()=> {
-    console.log("Listening on: "+ PORT)
+    console.log("CGTIE - Escuchando en puerto: "+ PORT)
 });
