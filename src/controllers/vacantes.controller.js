@@ -2,7 +2,7 @@ const googleSheets = require('../google-api/googleSheets-api.js'); // goo = func
 
 // DATOS DE LA HOJA DE VACANTES
 const vacantesURL = '1jWtWT8FqSZCOkhYJckZB8Rimx0P0j9FqbVOdazhY6CQ';
-const vacantesRange = 'Hoja 1!A:O';
+const vacantesRange = 'Hoja 1!A:Q';
 
 // FUNCIONES ASINCRONAS A LA API DE GOOGLE
 
@@ -15,31 +15,37 @@ async function getVacantes(req,res) {
 
 async function postVacantes(req,res) {
     console.log("Posteando Vacantes");
-    
-    //console.log(Object.values(req.body));
 
-    const registroAInsertaer =[];
-    registroAInsertaer.push(Object.values(req.body));
-    // const insertEjemplo = [[
-    //     "qwe123",
-    //     "qwe123",
-    //     "qwe123",
-    //     "qwe123",
-    //     "qwe123",
-    //     "qwe123",
-    //     "qwe123",
-    //     "qwe123",
-    //     "qwe123",
-    //     "qwe123",
-    //     "qwe123",
-    //     "qwe123",
-    //     "qwe123",
-    //     "qwe123",
-    //     "qwe123"
-    // ]];
-    await googleSheets.sheetsAutomatePost(vacantesURL,vacantesRange,registroAInsertaer);
-    //res.json(resultado);
-    res.send(req.body)
+    let coma;
+    // Aquí verificamos si existen comas en alguno de los valores del body
+    Object.values(req.body).forEach(value => {
+        if(value.includes(',')) {
+            coma = true;
+        }
+    });
+
+    if(coma) {
+        console.log("Se encontró una coma");
+        res.redirect(`${req.headers.origin}/coma`);
+        res.end();
+    } else {
+
+        const fila = Object.values(req.body);
+        const fecha = new Date().toLocaleDateString();
+
+        console.log(fecha);
+        
+        fila.push(fecha);
+        const registroAInsertar =[];
+        registroAInsertar.push(fila);
+        
+        console.log(fila);
+        await googleSheets.sheetsAutomatePost(vacantesURL,vacantesRange,registroAInsertar);
+        
+        res.append(registroAInsertar);
+        res.redirect(`${req.headers.origin}/ok`);
+        
+    }
 }
 
 // req.body es un objeto de Javascript
