@@ -15,29 +15,10 @@ async function getUnidadesEco(req,res) {
 
 async function postUnidadesEco(req,res) {
     console.log("Posteando Unidades");
-    
     //console.log(req.body);
     //console.log(Object.keys(req.body));
-
-    const insertEjemplo = [[
-        "qwe123",
-        "qwe123",
-        "qwe123",
-        "qwe123",
-        "qwe123",
-        "qwe123",
-        "qwe123",
-        "qwe123",
-        "qwe123",
-        "qwe123",
-        "qwe123",
-        "qwe123"
-
-
-
-    ]];
-    const resultado = await googleSheets.sheetsAutomatePost(unidadesURL,unidadesRange,insertEjemplo);
-    res.json(resultado);
+    //await googleSheets.sheetsAutomatePost(unidadesURL,unidadesRange,insertEjemplo);
+    res.json(req.body);
 }
 
 // req.body es un objeto de Javascript
