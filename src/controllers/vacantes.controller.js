@@ -25,7 +25,9 @@ async function postVacantes(req,res) {
     await googleSheets.sheetsAutomatePost(vacantesURL,vacantesRange,registroAInsertar);    
     
     console.log(req.body);
-    res.json(req.body);
+    console.log(req.get('Referer')+'ok');
+    res.redirect(req.get('Referer')+'ok');
+    res.end();
 
 
     // Aquí verificamos si existen comas en alguno de los valores del body
