@@ -26,19 +26,6 @@ async function postUnidadesEco(req,res) {
 
 module.exports = { getUnidadesEco, postUnidadesEco};
 
-    // const insertEjemplo = [[
-    //     "25/10/2022 10:10:59",
-    //     "Ejemplo_3",
-    //     "Ejemplo_3",
-    //     "Ejemplo_3",
-    //     "Ejemplo_3",
-    //     "030303",
-    //     "030303",
-    //     "Ejemplo_3",
-    //     "Ejemplo_3",
-    //     "Ejemplo_3",
-    //     "Ejemplo_3"
-    //   ]];
     //const resultado = await googleUnidadesEco.sheetsAutomatePost(insertEjemplo);
     //console.log(resultado);
     //res.json(resultado);

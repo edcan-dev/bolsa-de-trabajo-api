@@ -22,7 +22,7 @@ async function postVacantes(req,res) {
     fila.push(fecha);
     const registroAInsertar =[];
     registroAInsertar.push(fila);        
-    //await googleSheets.sheetsAutomatePost(vacantesURL,vacantesRange,registroAInsertar);    
+    await googleSheets.sheetsAutomatePost(vacantesURL,vacantesRange,registroAInsertar);    
     
     console.log(req.body);
     res.json(req.body);
